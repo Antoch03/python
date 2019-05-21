@@ -5,7 +5,7 @@
 # Author       : Anthony Rey
 # Version      : 1.0.0.0
 # Date         : 10/02/2019
-# Update       : 10/02/2019
+# Update       : 21/05/2019
 # Description  : Class representing a graph abstract data type (ADT)
 # Copyright    : Copyright (c) 2019 by Anthony Rey
 # License      : Creative Common Attribution-ShareAlike 4.0 International
@@ -32,15 +32,39 @@
 # Class representing a graph ADT 
 class Graph:
     """
+
+    get_edges:
+
+    get_isolated_nodes:
+
     """
 
     # 
     def __init__(self, graph_dictionary):
         self.graph = graph_dictionary
 
-    # Return the edges of the graph 
+    # Get the edges of the graph 
     def get_edges(self):
         """
+        Get the edges of the graph
+        -------------------------------------------------------------
+        Parameters
+        ----------
+        None
+        
+        Returns
+        -------
+        edges: list
+            Edges of the graph (node, neighbor)
+        
+        Example
+        -------
+        >>> [('a', 'b'), ('a', 'd')] = get_edges()
+        """
+        # Iterate through all the nodes of the graph and all their neighbors to get the edges
+        edges = [(node, neighbor) for node in self.graph for neighbor in self.graph[node]]
+        # Return the list of edges
+        return edges 
         """
         # Define a list of edges 
         edges = []
@@ -52,11 +76,30 @@ class Graph:
                 edges.append((node, neighbor))
         # Return the list of edges 
         return edges 
-
-    # Return the isolated nodes of the graph 
-    def get_isolated_nodes(self):
         """
 
+    # Get the isolated nodes of the graph 
+    def get_isolated_nodes(self):
+        """
+        Get the isolated nodes of the graph
+        -------------------------------------------------------------
+        Parameters
+        ----------
+        None
+        
+        Returns
+        -------
+        isolated_nodes: list
+            Isolated nodes of the graph (name of the node with no neighbors)
+        
+        Example
+        -------
+        >>> ['g', 'i'] = get_isolated_nodes()
+        """
+        # Iterate through all the nodes of the graph, and store its name if isolated (no neighbors) 
+        isolated_nodes = [node for node in self.graph if not self.graph[node]]
+        # Return the list of isolated nodes
+        return isolated_nodes 
         """
         # Define a list for isolated nodes 
         isolated_nodes = []
@@ -68,6 +111,7 @@ class Graph:
                 isolated_nodes += node 
         # Return the list of isolated nodes
         return isolated_nodes
+        """
 
 #========================================
 # Functions 
