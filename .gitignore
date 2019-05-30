@@ -1,6 +1,7 @@
 
 # Ignore some folders for now 
-projects/ 
+projects/ftp\ client/ 
+projects/pyta/
 tutorials/advanced\ concepts/ 
 tutorials/design\ pattern/ 
 tutorials/machine\ learning/ 
